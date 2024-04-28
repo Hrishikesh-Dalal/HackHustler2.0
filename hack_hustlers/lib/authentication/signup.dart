@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hack_hustlers/components/bottomNavBar.dart';
 import 'package:hack_hustlers/pages/home.dart';
 // import 'package:hack_hustlers/mood.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,7 +24,6 @@ class _UserSignUpState extends State<UserSignUp> {
   final TextEditingController ageController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -79,11 +79,9 @@ class _UserSignUpState extends State<UserSignUp> {
         'image upload': _uploadedFileURL,
       });
 
-      
-
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => BottomNavBar()),
       );
     } on FirebaseAuthException catch (e) {
       setState(() {

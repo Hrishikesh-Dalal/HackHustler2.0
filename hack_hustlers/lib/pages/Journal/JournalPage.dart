@@ -118,6 +118,7 @@ class _JournalState extends State<Journal> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Journal'),
+        automaticallyImplyLeading: true,
       ),
       body: Column(
         children: [

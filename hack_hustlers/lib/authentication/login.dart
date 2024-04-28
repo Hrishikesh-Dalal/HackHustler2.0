@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:doc_appoint/doctor/doc_homepage.dart';
-// import 'package:doc_appoint/pages/BottomNavBar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_hustlers/authentication/signup.dart';
 import 'package:hack_hustlers/components/bottomNavBar.dart';
 import 'package:hack_hustlers/pages/home.dart';
-// import 'package:hack_hustlers/mood.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -97,7 +94,7 @@ class _LoginViewState extends State<LoginView> {
           children: [
             Expanded(
               child: Container(
-                child: Image.asset('images/Mindspace.jpeg'),
+                //child: Image.asset('assets/doctor.jpg'),
                 color: Colors.white,
                 height: 100,
               ),

@@ -128,8 +128,16 @@ Speech therapy can be a life-changing experience for both children and adults. I
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 157, 157, 243),
-        title: const Text('Blog Page'),
+        backgroundColor: Color.fromARGB(255, 34, 96, 203),
+        title: Text(
+          'Blog Page',
+          style: TextStyle(
+            color: Colors.white, // Set text color to white
+          ),
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Set icon color to white
+        ),
         automaticallyImplyLeading: true,
       ),
       body: SingleChildScrollView(
@@ -146,7 +154,7 @@ Speech therapy can be a life-changing experience for both children and adults. I
       padding: const EdgeInsets.all(16.0),
       margin: const EdgeInsets.only(bottom: 16.0),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 228, 228, 251),
+        color: Color.fromARGB(255, 162, 210, 253),
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Column(
@@ -160,7 +168,12 @@ Speech therapy can be a life-changing experience for both children and adults. I
             ),
           ),
           const SizedBox(height: 8.0),
-          Text(post.description),
+          Text(
+            post.description,
+            style: const TextStyle(
+              fontSize: 15.0,
+            ),
+          ),
           const SizedBox(height: 0.0),
           Align(
             alignment: Alignment.bottomRight,
@@ -174,11 +187,26 @@ Speech therapy can be a life-changing experience for both children and adults. I
                   ),
                 );
               },
-              child: const Text('Read More >'),
-              style: ElevatedButton.styleFrom(
-                // foregroundColor: Theme.of(context).primaryColor,  // Uncomment for custom text color
-                backgroundColor: Colors.transparent, // Transparent background
-                shadowColor: Colors.transparent, // Remove shadow
+              child: Text(
+                'Read More >',
+                style: TextStyle(
+                  color: Color.fromARGB(
+                      255, 34, 96, 203), // Set text color to dark blue
+                ),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  Color.fromARGB(255, 162, 210, 253),
+                ), // Set button background color to grey
+                // Set border and elevation to null to remove them
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                    side: BorderSide.none,
+                  ),
+                ),
+                elevation: MaterialStateProperty.all<double>(
+                    0), // Set elevation to 0 to remove shadow
               ),
             ),
           ),
@@ -198,6 +226,7 @@ class FullBlogPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(post.title),
+        backgroundColor: Color.fromARGB(255, 159, 218, 255),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

@@ -37,13 +37,20 @@ class _ChatBotAppState extends State<ChatBot> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(200, 300, 300, 200),
-        title: Text('MentalHealth ChatBot'),
+        backgroundColor: Color.fromARGB(255, 79, 60, 127),
+        title: Text(
+          'SereneSpace Chatbot',
+          style: TextStyle(
+            color: Colors.white, // Set text color to white
+          ),
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Set icon color to white
+        ),
         automaticallyImplyLeading: false,
       ),
       body: Center(
-        child: Text(
-            'Welcome to Mental Heaalth ChatBot\n       I am here to help you'),
+        child: Text('Welcome to SereneSpace\n     I am here to help you'),
       ),
     );
   }

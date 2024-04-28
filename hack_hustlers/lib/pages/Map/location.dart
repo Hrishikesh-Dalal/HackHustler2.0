@@ -48,7 +48,23 @@ class _LocationPageState extends State<LocationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Location'),
+        backgroundColor: Color.fromARGB(255, 34, 96, 203),
+        title: Text(
+          'Location',
+          style: TextStyle(
+            color: Colors.white, // Set text color to white
+          ),
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Set icon color to white
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.location_on), // Location icon
+          onPressed: () {
+            // Handle location icon press
+          },
+        ),
+        automaticallyImplyLeading: false, // Remove back arrow
       ),
       body: _fetchedLocation
           ? FlutterMap(
