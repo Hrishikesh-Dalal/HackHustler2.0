@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:hack_hustlers/authentication/login.dart';
 import 'package:hack_hustlers/components/navbar.dart';
 import 'package:hack_hustlers/components/bottomNavBar.dart';
+import 'package:hack_hustlers/mood_tracker.dart';
 import 'package:hack_hustlers/pages/sleep_tracker.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,8 +30,8 @@ class _HomePageState extends State<HomePage> {
           color: Colors.white, // Set icon color to white
         ),
       ),
-      body: SleepTrackerPage(),
-
+      body: 
+      SleepTrackerPage(),
     );
   }
 }
