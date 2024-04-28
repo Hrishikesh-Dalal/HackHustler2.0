@@ -74,11 +74,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
             BottomNavigationBarItem(
               label: 'Location',
-              icon: Icon(Icons.location_city),
+              icon: Icon(Icons.location_on_outlined),
             ),
             BottomNavigationBarItem(
               label: 'Chat Bot',
-              icon: Icon(Icons.games),
+              icon: Icon(Icons.messenger_outline_sharp),
             ),
             BottomNavigationBarItem(
               label: 'Community',
@@ -88,7 +88,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
           currentIndex: currIndex,
           onTap: onTapped,
           //selectedItemColor: const Color.fromARGB(255, 108, 199, 242),
-          selectedItemColor: Color.fromARGB(255, 132, 132, 246),
+          selectedItemColor: Color.fromARGB(255, 211, 211, 211),
+          backgroundColor: Color.fromARGB(255, 34, 96, 203),
+          unselectedItemColor: Color.fromARGB(95, 211, 211, 211),
         ),
       ),
     );

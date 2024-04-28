@@ -17,6 +17,7 @@ class _PositivePageState extends State<PositivePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Positive Note'),
+        backgroundColor: Color.fromARGB(255, 34, 96, 203),
       ),
       body: SingleChildScrollView(
         // Allow content to scroll if needed
@@ -62,12 +63,12 @@ class _PositivePageState extends State<PositivePage> {
                   child: Text('Submit'),
                 ),
                 SizedBox(height: 10.0),
-                if (_data.isNotEmpty)
-                  Text(
-                    //this will get removed
-                    'Your Positive Note:\n$_data',
-                    style: TextStyle(fontSize: 20.0),
-                  ),
+                // if (_data.isNotEmpty)
+                //   Text(
+                //     //this will get removed
+                //     'Your Positive Note:\n$_data',
+                //     style: TextStyle(fontSize: 20.0),
+                //   ),
               ],
             ),
           ),
