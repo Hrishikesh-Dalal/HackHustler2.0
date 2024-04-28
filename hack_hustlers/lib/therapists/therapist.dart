@@ -31,7 +31,7 @@ class _TherapistState extends State<Therapist> {
               "Recommended Therapists",
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color.fromARGB(255,79,60,127),
+                color: Color.fromARGB(255, 34, 96, 203),
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -76,7 +76,7 @@ class _TherapistState extends State<Therapist> {
                                     CircleAvatar(
                                       backgroundImage:
                                           NetworkImage('${doc['image upload']}'),
-                                      backgroundColor: Color.fromARGB(255,79,60,127),
+                                      backgroundColor: Color.fromARGB(255, 34, 96, 203),
                                       radius: 30,
                                     ),
                                     const SizedBox(
@@ -90,7 +90,7 @@ class _TherapistState extends State<Therapist> {
                                           doc['name'],
                                           style: const TextStyle(
                                               color:
-                                                  Color.fromARGB(255,79,60,127),
+                                                  Color.fromARGB(255, 34, 96, 203),
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold),
                                         ),

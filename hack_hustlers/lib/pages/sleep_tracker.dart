@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:flutter_circular_slider/flutter_circular_slider.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:hack_hustlers/mood_tracker.dart';
 import 'package:hack_hustlers/pages/home.dart';
 //import 'package:hack_hustlers/arc_progress_bar_new/arc_progress_bar_new.dart';
 import 'package:arc_progress_bar_new/arc_progress_bar_new.dart';
@@ -203,9 +204,19 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
                     bottomLeftWidget: const Text("0"),
                     bottomRightWidget: const Text("100"),
                     bottomCenterWidget: const Text("Sleep Tracker"),
-                    centerWidget: Image.asset("images/blog1.png",
+
+                    centerWidget: Image.asset("assets/sleep.jpg",
                         height: 100, width: 200),
                   ),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MoodCalendarPage(),
+                            ));
+                      },
+                      child: Center(child: Text('Mood Tracker')))
                 ],
               ),
             ),

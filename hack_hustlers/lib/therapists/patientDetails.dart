@@ -132,7 +132,7 @@ class _patientDetailsState extends State<patientDetails> {
                     // image: DecorationImage(
                     //     image: AssetImage('assets/doc-pat.jpg'),
                     //     fit: BoxFit.cover),
-                    color: Color.fromARGB(255, 108, 199, 242),
+                    color: Color.fromARGB(255,149,202,248),
                   ),
 
                   child: Form(
