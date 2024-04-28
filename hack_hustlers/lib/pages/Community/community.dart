@@ -70,7 +70,7 @@ class _CommunityPageState extends State<CommunityPage> {
     print("User Deleted");
   }
 
-  bool _isFilterActive = false;
+  bool _isFilterActive = true;
 
   void _toggleFilter() {
     setState(() {
@@ -82,11 +82,15 @@ class _CommunityPageState extends State<CommunityPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 157, 157, 243),
+        backgroundColor: Color.fromARGB(255, 34, 96, 203),
+        iconTheme: IconThemeData(color: Colors.white),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Community'),
+            Text(
+              'Community',
+              style: TextStyle(color: Colors.white),
+            ),
             ElevatedButton(
               onPressed: _toggleFilter,
               child: Text(
@@ -122,7 +126,7 @@ class _CommunityPageState extends State<CommunityPage> {
             child: StreamBuilder<QuerySnapshot>(
               stream: _firestore
                   .collection('Collection')
-                  .orderBy('date', descending: true)
+                  .orderBy('date', descending: _isFilterActive)
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
@@ -144,10 +148,23 @@ class _CommunityPageState extends State<CommunityPage> {
                     return Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Card(
+                        borderOnForeground: true, elevation: 12.0,
+                        color: Color.fromARGB(255, 162, 210, 253),
+                        // color: index % 2 == 0
+                        // ? Color.fromARGB(197, 237, 232, 232)
+                        // : Color.fromARGB(209, 175, 127, 213),
+                        // color: Colors.white,
+                        // shape: ContinuousRectangleBorder(
+                        //     side: BorderSide(
+                        //       width: 1.0,
+                        //     ),),
+
+                        // borderRadius:
+                        // BorderRadius.all(Radius.elliptical(3, 4))),
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Stack(
-                            // Wrap content in a Stack for Positioned widget
+                            // Wrap content in a Stack for Positio  ned widget
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,18 +174,29 @@ class _CommunityPageState extends State<CommunityPage> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       if (user == widget.id)
-                                        Text('By: You')
+                                        Text('By: You',
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    138, 0, 0, 0)))
                                       else
-                                        Text('By: Anonymous'),
-                                      Text(date != null
-                                          ? '${date.toDate().toString().substring(0, 11)}'
-                                          : 'Date unavailable'),
+                                        Text('By: Anonymous',
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    138, 0, 0, 0))),
+                                      Text(
+                                        date != null
+                                            ? '${date.toDate().toString().substring(0, 11)}'
+                                            : 'Date unavailable',
+                                        style: TextStyle(
+                                            color:
+                                                Color.fromARGB(138, 0, 0, 0)),
+                                      ),
                                     ],
                                   ),
                                   const SizedBox(height: 8.0),
                                   Text(
                                     content ?? 'No Content',
-                                    style: const TextStyle(fontSize: 18.0),
+                                    style: const TextStyle(fontSize: 19.0),
                                   ),
                                   const SizedBox(
                                       height:
@@ -191,14 +219,20 @@ class _CommunityPageState extends State<CommunityPage> {
                                             value: true,
                                             child: Text(
                                               'Show Replies',
-                                              style: TextStyle(fontSize: 12.0),
+                                              style: TextStyle(
+                                                  fontSize: 13.0,
+                                                  color: const Color.fromARGB(
+                                                      188, 0, 0, 0)),
                                             ),
                                           ),
                                           DropdownMenuItem(
                                             value: false,
                                             child: Text(
                                               'Hide Replies',
-                                              style: TextStyle(fontSize: 12.0),
+                                              style: TextStyle(
+                                                  fontSize: 13.0,
+                                                  color: Color.fromARGB(
+                                                      188, 0, 0, 0)),
                                             ),
                                           ),
                                         ],
@@ -231,7 +265,7 @@ class _CommunityPageState extends State<CommunityPage> {
                                       Icons.delete,
                                       size: 20.0,
                                     ),
-                                    color: Colors.black,
+                                    color: Colors.red,
                                     splashColor: Colors.transparent,
                                     hoverColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -293,9 +327,12 @@ class _CommunityPageState extends State<CommunityPage> {
   Widget _buildReplies(String communityId) {
     return Column(
       children: [
-        TextField(
-          controller: _replyController,
-          decoration: InputDecoration(hintText: 'Write a reply...'),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 7.0),
+          child: TextField(
+            controller: _replyController,
+            decoration: InputDecoration(hintText: 'Write a reply...'),
+          ),
         ),
         ElevatedButton(
           onPressed: () => _addReply(communityId),

@@ -13,7 +13,9 @@ Widget buildEmotionsList(List<Map<String, dynamic>> emotionsList) {
           noteData['timestamp'] as Timestamp; // Assuming Timestamp
 
       return Card(
+        color: Color.fromARGB(255, 218, 217, 217),
         child: ListTile(
+          splashColor: Color.fromARGB(255, 218, 217, 217),
           title: Text(note),
           subtitle: Text(timestamp
               .toDate()

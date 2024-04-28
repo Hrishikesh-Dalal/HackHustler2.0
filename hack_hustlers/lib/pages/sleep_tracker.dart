@@ -7,7 +7,6 @@ import 'package:hack_hustlers/pages/home.dart';
 //import 'package:hack_hustlers/arc_progress_bar_new/arc_progress_bar_new.dart';
 import 'package:arc_progress_bar_new/arc_progress_bar_new.dart';
 
-
 class SleepData {
   final String sleepTime;
   final String wakeTime;
@@ -44,7 +43,7 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
   TextEditingController _wakeTimeController = TextEditingController();
   String? _selectedSleepType;
   String? _selectedSleepEnvironment;
-  double _sleepScore=0.0;
+  double _sleepScore = 0.0;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   List<SleepData> sleepDataList = [];
@@ -60,7 +59,6 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Center(
         child: SingleChildScrollView(
           child: Card(
@@ -69,21 +67,20 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 const  Text('Sleep Time:',
-                 style: TextStyle(
-                  //color: Color.fromARGB(255, 4, 43, 54),
-                  fontWeight: FontWeight.bold
+                  const Text(
+                    'Sleep Time:',
+                    style: TextStyle(
+                        //color: Color.fromARGB(255, 4, 43, 54),
+                        fontWeight: FontWeight.bold),
                   ),
-                  ),
-                  
                   InkWell(
                     onTap: () {
                       _selectTime(context, _sleepTimeController);
                     },
                     child: IgnorePointer(
                       child: TextField(
-                        style: TextStyle(color: Color.fromARGB(200, 200, 300, 300)),
-                        
+                        style: TextStyle(
+                            color: Color.fromARGB(200, 200, 300, 300)),
                         controller: _sleepTimeController,
                         decoration: InputDecoration(
                           fillColor: Color.fromARGB(20, 20, 20, 20),
@@ -94,15 +91,18 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
                     ),
                   ),
                   SizedBox(height: 10.0),
-                  Text('Wake Time:',
-                  style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text(
+                    'Wake Time:',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   InkWell(
                     onTap: () {
                       _selectTime(context, _wakeTimeController);
                     },
                     child: IgnorePointer(
                       child: TextField(
-                        style: TextStyle(color: Color.fromARGB(255, 79, 60, 127)),
+                        style:
+                            TextStyle(color: Color.fromARGB(255, 79, 60, 127)),
                         controller: _wakeTimeController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -115,7 +115,7 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
                   Row(
                     children: [
                       Text('Sleep Type:',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
                   DropdownButton(
@@ -125,15 +125,16 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
                         _selectedSleepType = newValue as String?;
                       });
                     },
-                    items: sleepTypes.map((sleepType) => DropdownMenuItem(
-                      child: Text(sleepType),
-                      value: sleepType,
-                    )).toList(),
+                    items: sleepTypes
+                        .map((sleepType) => DropdownMenuItem(
+                              child: Text(sleepType),
+                              value: sleepType,
+                            ))
+                        .toList(),
                   ),
                   SizedBox(height: 10.0),
                   Text('Sleep Environment:',
-                  style: TextStyle(fontWeight: FontWeight.bold)
-                  ),
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   DropdownButton(
                     value: _selectedSleepEnvironment,
                     onChanged: (newValue) {
@@ -141,34 +142,36 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
                         _selectedSleepEnvironment = newValue as String?;
                       });
                     },
-                    items: sleepEnvironments.map((environment) =>
-                      DropdownMenuItem(
-                        child: Text(environment),
-                        value: environment,
-                      )).toList(),
+                    items: sleepEnvironments
+                        .map((environment) => DropdownMenuItem(
+                              child: Text(environment),
+                              value: environment,
+                            ))
+                        .toList(),
                   ),
                   SizedBox(height: 16.0),
                   ElevatedButton(
-                    
                     onPressed: () {
                       generateSleepScore();
                     },
-                    child: Text('Generate Sleep Score',
-                    style: TextStyle(fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 211, 211, 211)),
+                    child: Text(
+                      'Generate Sleep Score',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 211, 211, 211)),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 79, 60, 127), // Background color
+                      backgroundColor:
+                          Color.fromARGB(255, 79, 60, 127), // Background color
                       //onPrimary: Colors.white, // Text color
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // Padding
-                      shape: RoundedRectangleBorder( // Button border radius
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 12), // Padding
+                      shape: RoundedRectangleBorder(
+                        // Button border radius
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-        
-                    ),
-                    
-                  
+                  ),
                   SizedBox(height: 16.0),
                   if (_sleepScore != null)
                     Text('Your Sleep Score: $_sleepScore'),
@@ -178,29 +181,31 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
                       saveSleepData();
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 79, 60, 127), // Background color
+                      backgroundColor:
+                          Color.fromARGB(255, 79, 60, 127), // Background color
                       //onPrimary: Colors.white, // Text color
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // Padding
-                      shape: RoundedRectangleBorder( // Button border radius
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 12), // Padding
+                      shape: RoundedRectangleBorder(
+                        // Button border radius
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                      child: Text('Save Sleep Data', style: TextStyle(fontSize: 16,
-                      color: Color.fromARGB(255, 211, 211, 211)
-                      )), // Text style
-                    ),
-        
+                    child: Text('Save Sleep Data',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Color.fromARGB(
+                                255, 211, 211, 211))), // Text style
+                  ),
                   SizedBox(height: 16.0),
                   ArcProgressBar(
-                     percentage: _sleepScore,
+                    percentage: _sleepScore,
                     bottomLeftWidget: const Text("0"),
                     bottomRightWidget: const Text("100"),
                     bottomCenterWidget: const Text("Sleep Tracker"),
-                    centerWidget:Image.asset("assets/sleep.jpg",height: 100,width:200),
-                  ), 
-          
-                  
-                
+                    centerWidget: Image.asset("images/blog1.png",
+                        height: 100, width: 200),
+                  ),
                 ],
               ),
             ),
@@ -210,7 +215,8 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
     );
   }
 
-  void _selectTime(BuildContext context, TextEditingController controller) async {
+  void _selectTime(
+      BuildContext context, TextEditingController controller) async {
     TimeOfDay? selectedTime = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
@@ -248,7 +254,8 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
     sleepDataList.clear();
 
     querySnapshot.docs.forEach((doc) {
-      SleepData sleepData = SleepData.fromMap(doc.data() as Map<String, dynamic>);
+      SleepData sleepData =
+          SleepData.fromMap(doc.data() as Map<String, dynamic>);
       sleepDataList.add(sleepData);
     });
 
@@ -261,16 +268,14 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
     double score = 0;
     if (_selectedSleepType == 'Deep Sleep') {
       score += 40; // Example points for deep sleep
-    } 
-     else if (_selectedSleepType == 'Light Sleep') {
+    } else if (_selectedSleepType == 'Light Sleep') {
       score += 30; // Example points for REM sleep
-    } 
-    else if (_selectedSleepType == 'REM Sleep') {
+    } else if (_selectedSleepType == 'REM Sleep') {
       score += 15; // Example points for REM sleep
     } // Add points for other sleep types
-     else if (_selectedSleepType == 'Nap') {
+    else if (_selectedSleepType == 'Nap') {
       score += 10; // Example points for REM sleep
-    } 
+    }
 
     if (_selectedSleepEnvironment == 'Bedroom') {
       score += 50; // Example points for bedroom sleep environment
@@ -279,16 +284,14 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
     } // Add points for other sleep environments
     else if (_selectedSleepEnvironment == 'Outdoors') {
       score += 20; // Example points for living room sleep environment
-    }
-    else {
-      score +=10;
+    } else {
+      score += 10;
     }
     setState(() {
       _sleepScore = score;
     });
   }
 }
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

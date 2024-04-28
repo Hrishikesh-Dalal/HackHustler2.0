@@ -34,7 +34,7 @@ class DetailPage extends StatelessWidget {
                       Text(
                         'Date: $date',
                         style: const TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 14.0,
                             color: Colors.red), // Adjust font size
                       ),
                       const SizedBox(height: 16.0), // Spacing between elements
