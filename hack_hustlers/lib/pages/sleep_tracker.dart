@@ -204,6 +204,7 @@ class _SleepTrackerPageState extends State<SleepTrackerPage> {
                     bottomLeftWidget: const Text("0"),
                     bottomRightWidget: const Text("100"),
                     bottomCenterWidget: const Text("Sleep Tracker"),
+
                     centerWidget: Image.asset("assets/sleep.jpg",
                         height: 100, width: 200),
                   ),
