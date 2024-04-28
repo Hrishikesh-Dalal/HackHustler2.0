@@ -1,55 +1,4 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
 
-// class NavBar extends StatelessWidget {
-//   const NavBar({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Drawer(
-//       child: ListView(
-//         children: [
-//           UserAccountsDrawerHeader(accountName:const Text('UserName'),
-//           accountEmail:const Text("Email"),
-//           currentAccountPicture: CircleAvatar(
-//             child: ClipOval(
-//               child:Icon(Icons.home),
-
-//             ),
-//           ),
-
-//           ),
-//           ListTile(
-//             leading: Icon(Icons.person),
-//             title: Text('Profile Page'),
-
-//           ),
-//           ListTile(
-//             leading: Icon(Icons.pages),
-//             title: Text('Journal Page'),
-
-//           ),
-//           ListTile(
-//             leading: Icon(Icons.face),
-//             title: Text('Activity'),
-
-//           ),
-//           ListTile(
-//             leading: Icon(Icons.flag),
-//             title: Text('Goal Tracker'),
-
-//           ),
-//           ListTile(
-//             leading: Icon(Icons.logout),
-//             title: Text('Log Out'),
-
-//           )
-
-//         ],
-//       ),
-//     );
-//   }
-// }
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -58,6 +7,7 @@ import 'package:hack_hustlers/Blog.dart';
 import 'package:hack_hustlers/authentication/login.dart';
 import 'package:hack_hustlers/pages/Activity.dart';
 import 'package:hack_hustlers/pages/Journal/JournalPage.dart';
+import 'package:hack_hustlers/therapists/therapist.dart';
 import 'package:hack_hustlers/utils.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -158,6 +108,16 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => Blog(),
+                          ));
+                    }),
+                     ListTile(
+                    leading: Icon(Icons.local_hospital),
+                    title: Text('Therapists'),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Therapist(),
                           ));
                     }),
                 ListTile(
